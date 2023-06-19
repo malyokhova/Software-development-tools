@@ -37,5 +37,12 @@ namespace UnitTest1
 			float div = a / b;
 			Assert::AreEqual(div, Division(a, b));
 		}
+
+		TEST_METHOD(TestMethod5)
+		{
+			float a = 4;
+			float fact = 24;
+			Assert::AreEqual(fact, Factorial(a));
+		}
 	};
 }
