@@ -12,7 +12,7 @@ namespace UnitTest1
 
 		TEST_METHOD(TestMethod1)
 		{
-			float a = 10, b = 5;
+			float a = 100, b = 5;
 			float sum = a + b;
 			Assert::AreEqual(sum, Sum(a, b));
 		}
