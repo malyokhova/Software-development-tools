@@ -1,0 +1,33 @@
+name: CICD
+
+on:
+  push:
+    branches: [ 'main', 'develop', 'feature_branch', 'lab-1' ]
+  pull_request:
+    branches: [ 'main', 'develop', 'feature_branch', 'lab-1' ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
+
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Clone
+      run:
+        git clone https://github.com/google/googletest.git -b release-1.11.0 
+    - name: Configure
+      run:
+        cmake -S. -Bbuild
+    - name: Build
+      run: 
+        cmake --build build
+    - name: Test
+      run:
+        ./build/test_lab1
+    - name: Create_exe
+      run:
+        gcc word_count.c -o word_count.exe
